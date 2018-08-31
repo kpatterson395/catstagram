@@ -1,0 +1,47 @@
+$primary-color: #003569;
+
+
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+
+
+.cat-header {
+	color: $primary-color;
+	font-family: 'Cookie', cursive;
+	font-size: 80px;
+	margin: 50px;
+	text-align: center;
+}
+
+.cat-gallery {
+	margin: 50px;
+	text-align: center;
+	.cat-img {
+		border: 1px solid gray;
+		display: inline-block;
+		height: 300px;
+		margin: 15px;
+		padding: 15px 15px 50px 15px;
+		width: 300px;
+		img {
+			height: 300px;
+			width: 300px;
+		}
+		button {
+			color: $primary-color;
+			border: none;
+			font-family: 'Roboto', sans-serif;
+			font-weight: 600;
+			height: 25px;
+			margin: 5px;
+			width: 100px;
+			&:hover {
+				border: 1px solid $primary-color;
+				cursor: pointer;
+			}
+		}
+	}	
+}

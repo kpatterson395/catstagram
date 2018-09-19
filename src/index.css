@@ -3,12 +3,14 @@ body {
   padding: 0;
   font-family: sans-serif; }
 
-.cat-header {
+#cat-header {
   color: #003569;
   font-family: 'Cookie', cursive;
   font-size: 80px;
   margin: 50px;
   text-align: center; }
+  #cat-header #cat-link {
+    text-decoration: none; }
 
 .cat-gallery {
   margin: 50px;

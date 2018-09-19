@@ -8,12 +8,16 @@ body {
 }
 
 
-.cat-header {
+#cat-header {
 	color: $primary-color;
 	font-family: 'Cookie', cursive;
 	font-size: 80px;
 	margin: 50px;
 	text-align: center;
+	#cat-link {
+		text-decoration: none;
+	}
+	
 }
 
 .cat-gallery {

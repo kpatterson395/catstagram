@@ -2,8 +2,8 @@ import { combineReducers } from 'redux';
 import { routerReducer } from 'react-router-redux';
 
 import photos from './photos';
-import likes from './likes';
+import comments from './comments'
 
-const rootReducer = combineReducers({photos, likes, routing: routerReducer });
+const rootReducer = combineReducers({photos, comments, routing: routerReducer });
 
 export default rootReducer;

@@ -2,9 +2,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
+import { BrowserRouter } from 'react-router-dom';
 import './index.css';
 import Header from './components/Header';
-import CatGallery from './components/CatGallery';
+import Main from './components/Main';
 import store from './store';
 import registerServiceWorker from './registerServiceWorker';
 
@@ -12,7 +13,7 @@ const Index = () => {
 	return (
 		<div>
 			<Header />
-			<CatGallery />
+			<Main />
 		</div>
 	)
 }
@@ -20,9 +21,9 @@ const Index = () => {
 
 ReactDOM.render(
 	<Provider store ={store}>
-
+		<BrowserRouter>
 			<Index />
-		
+		</BrowserRouter>
 	</Provider>, 
 	document.getElementById('root'));
 registerServiceWorker();

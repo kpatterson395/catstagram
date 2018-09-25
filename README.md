@@ -1,11 +1,4 @@
 
-//Key:
-//81672ba80cd431d83764c988668a4b8a
-
-//Secret:
-//d12f6c48357829b0
-
-
 This project was bootstrapped with [Create React App](https://github.com/facebookincubator/create-react-app).
 
 Below you will find some information on how to perform common tasks.<br>

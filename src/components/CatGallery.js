@@ -2,7 +2,6 @@ import React from 'react'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 
-
 const mapStateToProps = state => ({
 	photos: state.photos,
 	likes: state.likes
@@ -15,6 +14,7 @@ const mapDispatchToProps = dispatch => ({
 		dispatch({ type: 'ADD_LIKES', index})
 
 })
+
 
 class CatGallery extends React.Component{
 	constructor(props){
@@ -35,8 +35,8 @@ class CatGallery extends React.Component{
 						return (
 								<div key={val.id}className="cat-img">
 									<img src={`https://farm${val.farm}.staticflickr.com/${val.server}/${val.id}_${val.secret}.jpg`} />
-									<button onClick={() => this.handleLikes(index)} >{val.likes}  Like</button>
-									<Link to={`comment/${val.id}`}>Comment</Link>
+									<button onClick={() => this.handleLikes(index)} >{val.likes}  {val.likes === 1 ? "Like" : "Likes"}</button>
+									<Link className="comment-link" to={`comment/${val.id}`}>Comment</Link>
 								</div>
 							)
 					})}</div>}

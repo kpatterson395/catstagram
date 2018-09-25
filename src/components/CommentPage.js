@@ -38,22 +38,23 @@ class CommentPage extends React.Component{
 		let comment_id = this.props.match.params.id;
 		let currPhoto = this.props.photos.filter((val) => {return val["id"] === comment_id});	
 		return (
-			<div>
+			<div className="commentPage">
 				
 				{currPhoto.map((val) => 
 					{return (
 						<div key={val.id}>
-							<h1>{val.title}</h1>
 							<img src={`https://farm${val.farm}.staticflickr.com/${val.server}/${val.id}_${val.secret}.jpg`} key={val.id}/>	
+							<h3 className="img-title">{val.title}</h3>
 						</div>
 					)}
 				)}
-				<div> {this.props.comments[comment_id] ? this.props.comments[comment_id].map((val, i) => (<p key={i}>{val}</p>)) :
-				<p>No Comments!</p>}
+				<div className="comment-text"> {this.props.comments[comment_id] ? this.props.comments[comment_id].map((val, i) => (<p key={i}>{val}</p>)) :
+				<p className="placeholder">no comments...yet</p>}
 				</div>
-				<form onSubmit={(e) =>{this.handleSubmit(e)}}>
-					<input type="text" ref="comment" placeholder="Add a comment!"></input>
-					<input type="Submit"></input>
+				<hr />
+				<form className="comment-form" onSubmit={(e) =>{this.handleSubmit(e)}}>
+					<input className="comment-form__text" type="text" ref="comment" placeholder="add your comment..."></input>
+					<input className="comment-form__submit" type="submit"></input>
 				</form>
 			</div>
 		)

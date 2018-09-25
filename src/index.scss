@@ -1,10 +1,11 @@
 $primary-color: #003569;
 
 
+
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Roboto', sans-serif;
 }
 
 
@@ -16,6 +17,9 @@ body {
 	text-align: center;
 	#cat-link {
 		text-decoration: none;
+		&:visited {
+			color: $primary-color;
+		}
 	}
 	
 }
@@ -38,14 +42,72 @@ body {
 			color: $primary-color;
 			border: none;
 			font-family: 'Roboto', sans-serif;
-			font-weight: 600;
+			font-size: 12px;
+			font-weight: 400;
 			height: 25px;
-			margin: 5px;
+			margin: 10px 5px;
 			width: 100px;
+			text-decoration: none;
 			&:hover {
-				border: 1px solid $primary-color;
+				background: #efefef;
 				cursor: pointer;
 			}
 		}
+		.comment-link {
+			color: black;
+			font-family: 'Roboto', sans-serif;
+			font-size: 12px;
+			font-weight: 400;
+			margin: 10px 5px;
+			padding: 5px 15px;
+			text-decoration: none;
+			&:hover {
+				background: #efefef;
+				cursor: pointer;
+			}
+			&:visited {
+				color: black;
+			}			
+		}
 	}	
+}
+
+
+
+.commentPage {
+	margin-top: 100px;
+	text-align: center;
+	hr {
+		margin: 50px auto;
+		opacity: 0.5;
+		width: 60%;
+	}
+	.img-title {
+		color: #aeb3ba;
+		font-style: italic;
+	}
+	.comment-text {
+		margin-top: 50px;
+		margin-left: 20%;
+		width: 60%;
+		text-align: left;
+		.placeholder {
+			color: gray;
+		}
+	}
+	.comment-form {
+		margin: 10px;
+		padding: 10px;
+		.comment-form__text {
+			margin: 10px;
+			padding: 10px;			
+		}
+		.comment-form__submit {
+		    border-radius: 5px;
+		    border: 0;
+		    width: 80px;
+		    height: 25px;
+		}
+
+	}
 }

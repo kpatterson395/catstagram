@@ -8,6 +8,7 @@ import Header from './components/Header';
 import Main from './components/Main';
 import store from './store';
 import registerServiceWorker from './registerServiceWorker';
+import './firebase/firebase';
 
 const Index = () => {
 	return (

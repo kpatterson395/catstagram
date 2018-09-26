@@ -13,6 +13,9 @@ body {
     text-decoration: none; }
     #cat-header #cat-link:visited {
       color: #003569; }
+  @media screen and (max-width: 375px) {
+    #cat-header {
+      margin: 50px 10px; } }
 
 .cat-gallery {
   margin: 50px;
@@ -53,6 +56,11 @@ body {
         cursor: pointer; }
       .cat-gallery .cat-img .comment-link:visited {
         color: black; }
+  @media screen and (max-width: 375px) {
+    .cat-gallery {
+      margin: 50px 10px; }
+      .cat-gallery .cat-img {
+        margin: 15px 5px; } }
 
 .commentPage {
   margin-top: 100px;
@@ -82,5 +90,8 @@ body {
       border: 0;
       width: 80px;
       height: 25px; }
+  @media screen and (max-width: 375px) {
+    .commentPage img {
+      width: 375px; } }
 
 /*# sourceMappingURL=index.css.map */

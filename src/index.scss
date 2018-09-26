@@ -21,6 +21,9 @@ body {
 			color: $primary-color;
 		}
 	}
+	@media screen and (max-width: 375px){
+		margin: 50px 10px;
+	}
 	
 }
 
@@ -70,6 +73,14 @@ body {
 			}			
 		}
 	}	
+	@media screen and (max-width: 375px){
+		margin: 50px 10px;
+		.cat-img {
+			margin: 15px 5px;
+
+		}
+
+	}
 }
 
 
@@ -109,5 +120,10 @@ body {
 		    height: 25px;
 		}
 
+	}
+	@media screen and (max-width: 375px){
+		img {
+			width: 375px;
+		}
 	}
 }

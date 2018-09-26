@@ -22,11 +22,12 @@ const Index = () => {
 
 ReactDOM.render(
 	<Provider store ={store}>
-		<BrowserRouter>
+		<BrowserRouter basename={process.env.PUBLIC_URL || ''}>
 			<Index />
 		</BrowserRouter>
 	</Provider>, 
 	document.getElementById('root'));
-registerServiceWorker();
 
+
+{/* registerServiceWorker(); */}
 

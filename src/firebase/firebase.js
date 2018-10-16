@@ -1,4 +1,4 @@
-import * as firebase from 'firebase';
+import firebase from 'firebase/app';
 
 const config = {
 	apiKey: "AIzaSyC1pXkfAHwabGn-2zwPgt0Q31SN3DlGpQo",
@@ -10,35 +10,7 @@ const config = {
 };
 
 
-firebase.initializeApp(config)
 
-const database = firebase.database();
+firebase.initializeApp(config);
 
-
-export { firebase, database as default };
-
-
-// firebase.database().ref().set({
-// 	name: 'Kristie Patterson'
-// }).then(() => {
-// 	console.log("updated")
-// }).catch((error) => {
-// 	console.log(error)
-// })
-
-// firebase.database().ref()
-// 	.once('value')
-// 	.then((snapshot) => {
-// 		const val = snapshot.val();
-// 		console.log(val);
-// 	})
-// 	.catch((e) => {
-// 		console.log( 'error: ', e)
-// 	})
-
-
-// firebase.database().ref()
-// 	.on('value', (snapshot) => {
-// 		const val = snapshot.val();
-// 		console.log(val);
-// 	})
+export default firebase;

@@ -1,19 +1,9 @@
 import React from 'react'
 import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
+import { addLikes } from '../actions/photoActions';
 
-const mapStateToProps = state => ({
-	photos: state.photos,
-	likes: state.likes
-})
 
-const mapDispatchToProps = dispatch => ({
-	loadPhotos : (photos) =>
-		dispatch({ type: 'LOAD_PHOTOS', photos }),
-	addLikes : (index) => 
-		dispatch({ type: 'ADD_LIKES', index})
-
-})
 
 
 class CatGallery extends React.Component{
@@ -45,5 +35,17 @@ class CatGallery extends React.Component{
 	}
 }
 
+const mapStateToProps = state => ({
+	photos: state.photos,
+	likes: state.likes
+})
+
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		
+		addLikes: (index) => dispatch(addLikes(index))
+	}
+}
 
 export default connect(mapStateToProps, mapDispatchToProps)(CatGallery)

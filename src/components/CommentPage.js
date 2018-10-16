@@ -1,18 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import { addComments, firstComment} from '../actions/commentActions';
 
-
-const mapStateToProps = state => ({
-	comments: state.comments,
-	photos: state.photos
-})
-
-const mapDispatchToProps = dispatch => ({
-	addComments : (comment, index) => 
-		dispatch({ type: 'ADD_COMMENTS', comment, index}),
-	firstComment : (comment, index) => 
-		dispatch({ type: 'ADD_FIRST_COMMENT', comment, index})
-})
 
 
 
@@ -58,6 +47,20 @@ class CommentPage extends React.Component{
 				</form>
 			</div>
 		)
+	}
+}
+
+const mapStateToProps = state => ({
+	comments: state.comments,
+	photos: state.photos
+})
+
+
+
+const mapDispatchToProps = (dispatch) => {
+	return {
+		addComments: (comment, index) => dispatch(addComments(comment, index)),
+		firstComment: (comment, index) => dispatch(firstComment(comment, index))
 	}
 }
 

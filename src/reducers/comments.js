@@ -1,4 +1,4 @@
-const comments = (state = {42430203411: ["this is awesome"]}, action) => {
+const comments = (state = {}, action) => {
 	switch (action.type) {
 		case 'ADD_COMMENTS':
 			return (
@@ -13,6 +13,10 @@ const comments = (state = {42430203411: ["this is awesome"]}, action) => {
 						...state,
 						[action.index]: [action.comment]
 				}
+			)
+		case 'LOAD_COMMENTS':
+			return (
+				action.comments
 			)
 				
 

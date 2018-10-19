@@ -1,7 +1,7 @@
 const photos = (state = [], action) => {
 	switch (action.type) {
 		case 'LOAD_PHOTOS':
-			return [...action.photos]
+			return action.photos
 
 		case 'ADD_LIKES':
 			return [...state.slice(0, action.index),

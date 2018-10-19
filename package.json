@@ -27,5 +27,8 @@
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
   },
-  "homepage": "https://kpatterson395.github.io/goatstagram"
+  "homepage": "https://kpatterson395.github.io/goatstagram",
+  "devDependencies": {
+    "redux-devtools-extension": "^2.13.5"
+  }
 }

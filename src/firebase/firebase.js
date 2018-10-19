@@ -1,4 +1,6 @@
-import firebase from 'firebase/app';
+import firebase from 'firebase';
+
+
 
 const config = {
 	apiKey: "AIzaSyC1pXkfAHwabGn-2zwPgt0Q31SN3DlGpQo",
@@ -8,7 +10,6 @@ const config = {
 	storageBucket: "catsagram-b77b3.appspot.com",
 	messagingSenderId: "1029156916968"
 };
-
 
 
 firebase.initializeApp(config);

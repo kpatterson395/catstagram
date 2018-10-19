@@ -4,17 +4,14 @@ import { connect } from 'react-redux';
 import { withRouter } from 'react-router';
 import CatGallery from './CatGallery';
 import CommentPage from './CommentPage';
-import database from '../firebase/firebase';
-import { loadPhotos } from '../actions/photoActions';
-
-
-
+import firebase from '../firebase/firebase';
+import { getPhotosThunk } from '../actions/photoActions';
 
 class Main extends React.Component {
 
 
 	componentWillMount(){
-		this.fetchPictures();
+		this.props.getPhotosThunk();
 	}
 
 	fetchPictures = () => {
@@ -27,6 +24,10 @@ class Main extends React.Component {
 	      return response.json();
 	    }).then(data => {
 	    	data.photos.photo.forEach((obj) => obj.likes = 0)
+	    	firebase.database().ref().push(data.photos.photo.slice(0,30))
+	    	firebase.database().ref().on('value', (snapshot) => {
+			  console.log(snapshot.val());
+			});
 	    	this.props.loadPhotos(data.photos.photo.slice(0,30))
 	    }).catch(err => {
 	      console.log("ERROR: " + err);
@@ -50,10 +51,13 @@ const mapStateToProps = state => ({
 })
 
 
-
 const mapDispatchToProps = (dispatch) => {
 	return {
-		loadPhotos: (photos) => dispatch(loadPhotos(photos))	}
+		
+		getPhotosThunk: () => dispatch(getPhotosThunk())
+	}
 }
+
+
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Main));

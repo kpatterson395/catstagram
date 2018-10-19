@@ -1,7 +1,8 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { addComments, firstComment} from '../actions/commentActions';
-
+import { addComments, firstComment, addCommentsThunk, getCommentsThunk} from '../actions/commentActions';
+import { getPhotosThunk } from '../actions/photoActions';
+import firebase from '../firebase/firebase';
 
 
 
@@ -9,35 +10,33 @@ class CommentPage extends React.Component{
 	constructor(props){
 		super(props)
 	}
-
-
+	componentWillMount(){
+		this.props.getCommentsThunk(this.props.match.params.id);
+		this.props.getPhotosThunk(this.props.match.params.id);
+	}
 	handleSubmit(e){
 		e.preventDefault();
 		let newComm = this.refs.comment.value;
-		if(this.props.comments[this.props.match.params.id]){
-			this.props.addComments(newComm, this.props.match.params.id)
-		} else {
-			this.props.firstComment(newComm, this.props.match.params.id)			
-		}
+		this.props.addCommentsThunk(newComm, this.props.match.params.id)
+		this.props.getPhotosThunk()
 		this.refs.comment.value = "";
-		console.log(this.props.comments[this.props.match.params.id]);
+		this.props.history.push('/');
 	}
 
 	render(){
 		let comment_id = this.props.match.params.id;
-		let currPhoto = this.props.photos.filter((val) => {return val["id"] === comment_id});	
+		let currPhoto = this.props.photos[0][comment_id]
+		
 		return (
 			<div className="commentPage">
 				
-				{currPhoto.map((val) => 
-					{return (
-						<div key={val.id}>
-							<img src={`https://farm${val.farm}.staticflickr.com/${val.server}/${val.id}_${val.secret}.jpg`} key={val.id}/>	
-							<h3 className="img-title">{val.title}</h3>
-						</div>
-					)}
-				)}
-				<div className="comment-text"> {this.props.comments[comment_id] ? this.props.comments[comment_id].map((val, i) => (<p key={i}>{val}</p>)) :
+		
+				<div key={currPhoto.id}>
+					<img src={`https://farm${currPhoto.farm}.staticflickr.com/${currPhoto.server}/${currPhoto.id}_${currPhoto.secret}.jpg`} />	
+					<h3 className="img-title">{currPhoto.title}</h3>
+				</div>
+
+				<div className="comment-text"> {this.props.comments[comment_id] ? this.props.comments.map((val, i) => (<p key={i}>{val}</p>)) :
 				<p className="placeholder">no comments...yet</p>}
 				</div>
 				<hr />
@@ -60,9 +59,14 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch) => {
 	return {
 		addComments: (comment, index) => dispatch(addComments(comment, index)),
-		firstComment: (comment, index) => dispatch(firstComment(comment, index))
+		firstComment: (comment, index) => dispatch(firstComment(comment, index)),
+		addCommentsThunk: (comment, index) => dispatch(addCommentsThunk(comment, index)),
+		getPhotosThunk: () => dispatch(getPhotosThunk()),
+		getCommentsThunk: (index) => dispatch(getCommentsThunk(index))
 	}
 }
 
 
 export default connect(mapStateToProps, mapDispatchToProps)(CommentPage)
+
+

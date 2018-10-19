@@ -1,27 +1,24 @@
-import { createStore, applyMiddleware, compose } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
+import { persistStore, persistReducer } from 'redux-persist'
+import { composeWithDevTools } from 'redux-devtools-extension';
 import rootReducer from './reducers/index';
 import thunk from 'redux-thunk';
-import { reduxFirestore, getFirestore } from 'redux-firestore';
-import { reactReduxFirebase, getFirebase } from 'react-redux-firebase';
-import firebase from './firebase/firebase'; 
+import autoMergeLevel2 from 'redux-persist/lib/stateReconciler/autoMergeLevel2';
+import { reactReduxFirebase } from 'react-redux-firebase';
+import fbConfig from './firebase/firebase'; 
+import storage from 'redux-persist/lib/storage'
+
+const persistConfig = {
+  key: 'root',
+  storage,
+  stateReconciler: autoMergeLevel2
+}
 
 
-const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-const defaultState = {
-  photos: [],
-  comments: {42430203411: ["this is awesome"]}
-};
-
-const store = createStore(rootReducer, 
-						defaultState, 
-						compose (applyMiddleware(thunk.withExtraArgument({ getFirebase, getFirestore })),
-								reduxFirestore(firebase),
-								reactReduxFirebase(firebase) )
-						)
-
-export default store;
-
-// window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
 
 
+export const store = createStore(rootReducer, composeWithDevTools (
+
+		applyMiddleware(thunk),
+		reactReduxFirebase(fbConfig)
+	));

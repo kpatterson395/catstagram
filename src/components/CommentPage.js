@@ -18,25 +18,27 @@ class CommentPage extends React.Component{
 		e.preventDefault();
 		let newComm = this.refs.comment.value;
 		this.props.addCommentsThunk(newComm, this.props.match.params.id)
-		this.props.getPhotosThunk()
 		this.refs.comment.value = "";
-		this.props.history.push('/');
+		window.location.reload();
+		console.log(this.props.comments)
+
 	}
+
 
 	render(){
 		let comment_id = this.props.match.params.id;
 		let currPhoto = this.props.photos[0][comment_id]
-		
 		return (
+
 			<div className="commentPage">
 				
-		
+			
 				<div key={currPhoto.id}>
 					<img src={`https://farm${currPhoto.farm}.staticflickr.com/${currPhoto.server}/${currPhoto.id}_${currPhoto.secret}.jpg`} />	
 					<h3 className="img-title">{currPhoto.title}</h3>
 				</div>
 
-				<div className="comment-text"> {this.props.comments[comment_id] ? this.props.comments.map((val, i) => (<p key={i}>{val}</p>)) :
+				<div className="comment-text"> {this.props.comments? this.props.comments.map((val, i) => (<p key={i}>{val}</p>)) :
 				<p className="placeholder">no comments...yet</p>}
 				</div>
 				<hr />

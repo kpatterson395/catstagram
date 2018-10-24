@@ -19,7 +19,7 @@ class CommentPage extends React.Component{
 		let newComm = this.refs.comment.value;
 		this.props.addCommentsThunk(newComm, this.props.match.params.id)
 		this.refs.comment.value = "";
-		window.location.reload();
+		window.location.reload(true);
 		console.log(this.props.comments)
 
 	}
